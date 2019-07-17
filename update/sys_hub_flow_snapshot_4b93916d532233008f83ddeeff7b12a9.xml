@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_hub_flow_snapshot">
+    <sys_hub_flow_snapshot action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <acls/>
+        <active>true</active>
+        <annotation/>
+        <callable_by_client_api>false</callable_by_client_api>
+        <category/>
+        <copied_from/>
+        <copied_from_name/>
+        <description/>
+        <internal_name>twittertweetflow</internal_name>
+        <label_cache>[{"name":"Created or Updated_1.run_start_time","label":"Trigger➛Run Start Time","type":"glide_date_time","base_type":"glide_date_time"},{"name":"Created or Updated_1.current.description","label":"Trigger➛Incident Record➛Description","reference":"","reference_display":"Description","type":"string","base_type":"string","parent_table_name":"incident","column_name":"description"}]</label_cache>
+        <master>true</master>
+        <name>TwitterTweetFlow</name>
+        <outputs/>
+        <parent_flow display_value="TwitterTweetFlow">ce909d69532233008f83ddeeff7b1231</parent_flow>
+        <remote_trigger_id/>
+        <run_as>user</run_as>
+        <sc_callable>false</sc_callable>
+        <status>published</status>
+        <sys_class_name>sys_hub_flow_snapshot</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-07-09 19:20:27</sys_created_on>
+        <sys_id>4b93916d532233008f83ddeeff7b12a9</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>TwitterTweetFlow</sys_name>
+        <sys_package display_value="TwitterSpoke" source="sn_twitterspoke">7a9e0929532233008f83ddeeff7b12a5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="TwitterSpoke">7a9e0929532233008f83ddeeff7b12a5</sys_scope>
+        <sys_update_name>sys_hub_flow_snapshot_4b93916d532233008f83ddeeff7b12a9</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-07-09 19:20:27</sys_updated_on>
+        <type>flow</type>
+    </sys_hub_flow_snapshot>
+    <sys_translated_text action="delete_multiple" query="documentkey=4b93916d532233008f83ddeeff7b12a9"/>
+    <sys_variable_value action="delete_multiple" query="document_key=4b93916d532233008f83ddeeff7b12a9"/>
+</record_update>

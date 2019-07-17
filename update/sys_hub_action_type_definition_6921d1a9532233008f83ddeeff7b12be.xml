@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_hub_action_type_definition">
+    <sys_hub_action_type_definition action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <acls/>
+        <active>true</active>
+        <annotation>Twitter</annotation>
+        <callable_by_client_api>false</callable_by_client_api>
+        <category/>
+        <copied_from>f3ff0d69532233008f83ddeeff7b127d</copied_from>
+        <copied_from_name>TwitterPostAction</copied_from_name>
+        <description/>
+        <internal_name>twitterpostaction1</internal_name>
+        <label_cache>[{"name":"{{action.tweet}}","label":"action➛tweet","type":"action","ref":""},{"name":"{{step[98d9b97c-5e31-4b5d-94ce-c22b64742aa4].authHeader}}","label":"step➛Create Twitter Signature➛authHeader","type":"step","ref":""},{"name":"{{step[98d9b97c-5e31-4b5d-94ce-c22b64742aa4].endpointandquery}}","label":"step➛Create Twitter Signature➛endpointandquery","type":"step","ref":""},{"name":"{{step[98d9b97c-5e31-4b5d-94ce-c22b64742aa4].b}}","label":"step➛Create Twitter Signature➛b","type":"step","ref":""},{"name":"{{step[98d9b97c-5e31-4b5d-94ce-c22b64742aa4].ba}}","label":"step➛Create Twitter Signature➛ba","type":"step","ref":""},{"name":"{{step[98d9b97c-5e31-4b5d-94ce-c22b64742aa4].bas}}","label":"step➛Create Twitter Signature➛bas","type":"step","ref":""},{"name":"{{step[98d9b97c-5e31-4b5d-94ce-c22b64742aa4].base}}","label":"step➛Create Twitter Signature➛base","type":"step","ref":""},{"name":"{{step[98d9b97c-5e31-4b5d-94ce-c22b64742aa4].baseU}}","label":"step➛Create Twitter Signature➛baseU","type":"step","ref":""},{"name":"{{step[98d9b97c-5e31-4b5d-94ce-c22b64742aa4].baseUr}}","label":"step➛Create Twitter Signature➛baseUr","type":"step","ref":""},{"name":"{{step[98d9b97c-5e31-4b5d-94ce-c22b64742aa4].baseUrl}}","label":"step➛Create Twitter Signature➛baseUrl","type":"step","ref":""},{"name":"{{step[98d9b97c-5e31-4b5d-94ce-c22b64742aa4].useMid}}","label":"step➛Create Twitter Signature➛useMid","type":"step","ref":""}]</label_cache>
+        <latest_snapshot>d4b6de6b532233008f83ddeeff7b12e9</latest_snapshot>
+        <master_snapshot>a58119a9532233008f83ddeeff7b123b</master_snapshot>
+        <name>TwitterPostAction1</name>
+        <outputs/>
+        <state>published</state>
+        <sys_class_name>sys_hub_action_type_definition</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-07-09 19:09:42</sys_created_on>
+        <sys_id>6921d1a9532233008f83ddeeff7b12be</sys_id>
+        <sys_mod_count>109</sys_mod_count>
+        <sys_name>TwitterPostAction1</sys_name>
+        <sys_package display_value="TwitterSpoke" source="sn_twitterspoke">7a9e0929532233008f83ddeeff7b12a5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="TwitterSpoke">7a9e0929532233008f83ddeeff7b12a5</sys_scope>
+        <sys_update_name>sys_hub_action_type_definition_6921d1a9532233008f83ddeeff7b12be</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-07-16 05:21:24</sys_updated_on>
+        <system_level>false</system_level>
+        <type/>
+    </sys_hub_action_type_definition>
+    <sys_translated_text action="delete_multiple" query="documentkey=6921d1a9532233008f83ddeeff7b12be"/>
+    <sys_variable_value action="delete_multiple" query="document_key=6921d1a9532233008f83ddeeff7b12be"/>
+</record_update>

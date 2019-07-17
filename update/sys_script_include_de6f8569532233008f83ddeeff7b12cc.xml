@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>sn_twitterspoke.TwitterUtils</api_name>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>TwitterUtils</name>
+        <script><![CDATA[var TwitterUtils = Class.create();
+TwitterUtils.prototype = {
+	initialize: function() {
+	},
+	getSysAliasById: function(aliasId){
+		var gr = new GlideRecord("sys_alias");
+		gr.addActiveQuery();
+		gr.addQuery("id", aliasId);
+		gr.query();
+		if(gr.next())
+			return gr.getValue("sys_id");
+		return null;
+	},
+	getConnectionGR: function(connectionAlias){
+		var grConn = new GlideRecord("sys_connection");
+		grConn.addActiveQuery();
+		grConn.addQuery("connection_alias", connectionAlias);
+		grConn.query();
+		if(grConn.next())
+			return grConn;
+		return null;
+	},
+	percentEncode: function(inp) {
+		return encodeURIComponent(inp)
+		.replace(/!/g,'%21')
+		.replace(/\*/g,'%2A')
+		.replace(/\(/g,'%28')
+		.replace(/\)/g,'%29')
+		.replace(/'/g,'%27');
+	},
+	hackEncrypt:function(credentilGR, plainText) {
+		var saved = credentilGR.getValue("consumer_secret");
+		credentilGR.consumer_secret.setDisplayValue(plainText);
+		var encrypted = credentilGR.getValue("consumer_secret");
+		credentilGR.consumer_secret.setValue(saved);
+		return encrypted;
+	},
+	getAuthHeader: function(cred_id, tweet, endpoint){
+		var consumer_secret;
+		var consumer_key;
+		var access_token;
+		var access_token_secret;
+		
+		// get twitter credentials
+		var grCred = new GlideRecord("sn_twitterspoke_twitter_credentials");
+		gs.info("cred_id = " + cred_id);
+		grCred.get(cred_id);
+		if(grCred.isValid()){
+			consumer_secret = grCred.consumer_secret.getDecryptedValue();
+			consumer_key = grCred.consumer_key.getDecryptedValue();
+			access_token = grCred.access_token.getDecryptedValue();
+			access_token_secret = grCred.access_token_secret.getDecryptedValue();
+		} else{
+			gs.info("Could not find credential with id " + cred_id);
+			return;
+		}
+		
+		//oauth_nonce is a unique token your application should generate for each unique request.
+		//Twitter will use this value to determine whether a request has been submitted multiple times.
+		var nonce = Math.random().toString(36).substring(2, 15) +
+		Math.random().toString(36).substring(2, 15);
+		
+		//timestamp epoch
+		var timeStamp = Math.round(new GlideDateTime().getNumericValue() / 1000);
+		
+		var encodedConsumerKey = this.percentEncode(consumer_key);
+		var encodedOauthToken = this.percentEncode(access_token);
+		var encodedNonce = this.percentEncode(nonce);
+		var encodedHmacMethod = this.percentEncode("HMAC-SHA1");
+	    var encodedOauthVersion = this.percentEncode("1.0");
+		var encodedTimestamp = this.percentEncode(timeStamp);
+		
+		//These headers should be in alphabetical order
+		var autSign = 'oauth_consumer_key=' + encodedConsumerKey + '&' +
+		'oauth_nonce=' + encodedNonce + '&' +
+		'oauth_signature_method=' + encodedHmacMethod + '&' +
+		'oauth_timestamp=' + encodedTimestamp + '&' +
+		'oauth_token=' + encodedOauthToken + '&' +
+		'oauth_version=' + encodedOauthVersion + '&' +
+		'status=' + this.percentEncode(tweet);
+		
+		// baseString for creating signature
+		var baseString = "POST&" + this.percentEncode(endpoint) + "&" + this.percentEncode(autSign);
+		
+		// create signing key for creating request signature
+		var signingKey = this.percentEncode(consumer_secret) + "&" + this.percentEncode(access_token_secret);
+		var base64SigningKey = gs.base64Encode(signingKey);
+		
+		// create oauth_signature
+		var signature = CertificateEncryption.generateMac(base64SigningKey, "HmacSHA1", baseString);
+		
+		// Authorization header which includes " surrounding the values as needed by Twitter
+		var hdrsDblQ = 'OAuth oauth_consumer_key="' + sn_fd.GlideActionUtil.setEncryptedOutput(this.hackEncrypt(grCred, encodedConsumerKey)) + '", ' +
+		'oauth_nonce="' + encodedNonce + '", ' +
+		'oauth_signature="' + this.percentEncode(signature)+ '", ' +
+		'oauth_signature_method="' + encodedHmacMethod + '", ' +
+		'oauth_timestamp="' + encodedTimestamp + '", ' +
+		'oauth_token="' + sn_fd.GlideActionUtil.setEncryptedOutput(this.hackEncrypt(grCred,encodedOauthToken)) + '", ' +
+		'oauth_version="'+ encodedOauthVersion + '"'.replace(/"/g, '"');
+		
+		return hdrsDblQ.toString();
+	},
+	type: 'TwitterUtils'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-07-09 19:02:27</sys_created_on>
+        <sys_id>de6f8569532233008f83ddeeff7b12cc</sys_id>
+        <sys_mod_count>41</sys_mod_count>
+        <sys_name>TwitterUtils</sys_name>
+        <sys_package display_value="TwitterSpoke" source="sn_twitterspoke">7a9e0929532233008f83ddeeff7b12a5</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="TwitterSpoke">7a9e0929532233008f83ddeeff7b12a5</sys_scope>
+        <sys_update_name>sys_script_include_de6f8569532233008f83ddeeff7b12cc</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-07-17 14:17:16</sys_updated_on>
+    </sys_script_include>
+</record_update>

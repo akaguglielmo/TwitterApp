@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_hub_step_instance">
+    <sys_hub_step_instance action="INSERT_OR_UPDATE">
+        <action display_value="TwitterPostAction1">a58119a9532233008f83ddeeff7b123b</action>
+        <cid>98d9b97c-5e31-4b5d-94ce-c22b64742aa4</cid>
+        <extended_inputs/>
+        <extended_inputs/>
+        <extended_outputs/>
+        <icon/>
+        <inputs/>
+        <label>Create Twitter Signature</label>
+        <order>1</order>
+        <outputs/>
+        <step_type display_value="Script">106afb6647032200b4fad7527c9a71e7</step_type>
+        <sys_class_name>sys_hub_step_instance</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-07-09 19:11:20</sys_created_on>
+        <sys_id>e98119a9532233008f83ddeeff7b1244</sys_id>
+        <sys_mod_count>21</sys_mod_count>
+        <sys_name>Create Twitter Signature</sys_name>
+        <sys_package display_value="TwitterSpoke" source="sn_twitterspoke">7a9e0929532233008f83ddeeff7b12a5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="TwitterSpoke">7a9e0929532233008f83ddeeff7b12a5</sys_scope>
+        <sys_update_name>sys_hub_step_instance_e98119a9532233008f83ddeeff7b1244</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-07-16 05:21:24</sys_updated_on>
+    </sys_hub_step_instance>
+    <sys_variable_value action="delete_multiple" query="document_key=e98119a9532233008f83ddeeff7b1244"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_step_instance</document>
+        <document_key>e98119a9532233008f83ddeeff7b1244</document_key>
+        <order>1</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-07-09 19:11:21</sys_created_on>
+        <sys_id>258119a9532233008f83ddeeff7b1263</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-07-09 19:11:21</sys_updated_on>
+        <value>/1.1/statuses/update.json</value>
+        <variable display_value="">e98119a9532233008f83ddeeff7b124c</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_step_instance</document>
+        <document_key>e98119a9532233008f83ddeeff7b1244</document_key>
+        <order>600</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-07-09 19:11:21</sys_created_on>
+        <sys_id>a18119a9532233008f83ddeeff7b1262</sys_id>
+        <sys_mod_count>19</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-07-16 05:21:24</sys_updated_on>
+        <value>(function execute(inputs, outputs) {
+  var twitterUtils = new sn_twitterspoke.TwitterUtils();
+  
+  // get sys_id for connection alias
+  var alias_id = twitterUtils.getSysAliasById(inputs.twitter_alias_id)
+  
+  // get connection info
+  var grConn = twitterUtils.getConnectionGR(alias_id);
+  var cred_id = grConn.getValue("credential");
+  
+  // tweet text
+  var tweet = inputs.tweet_text;
+  
+  // create API endpoint
+  var conn_url = grConn.getValue("protocol") + "://" + grConn.getValue("host");
+  outputs.baseUrl = conn_url;
+  var endpoint = conn_url + inputs.status_update_path;
+  var authHeader = twitterUtils.getAuthHeader(cred_id, tweet, endpoint);
+  outputs.endpointandquery = (inputs.status_update_path + "?status=" + twitterUtils.percentEncode(tweet)).toString();
+  outputs.authHeader = authHeader;
+  if(grConn.getValue("use_mid") == 1){
+    outputs.useMid = true;
+  }
+  else {
+    outputs.useMid = false;
+  }
+})(inputs, outputs);</value>
+        <variable display_value="">71aa7f6647032200b4fad7527c9a719b</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_step_instance</document>
+        <document_key>e98119a9532233008f83ddeeff7b1244</document_key>
+        <order>2</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-07-09 19:11:21</sys_created_on>
+        <sys_id>e58119a9532233008f83ddeeff7b1263</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-07-15 18:44:03</sys_updated_on>
+        <value>sn_twitterspoke.TwitterAlias</value>
+        <variable display_value="">2d8119a9532233008f83ddeeff7b1250</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_step_instance</document>
+        <document_key>e98119a9532233008f83ddeeff7b1244</document_key>
+        <order>400</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-07-09 19:11:21</sys_created_on>
+        <sys_id>ed8119a9532233008f83ddeeff7b1261</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-07-09 19:11:21</sys_updated_on>
+        <value>35aa573fd7802200bdbaee5b5e610375</value>
+        <variable display_value="">f5e56d79b3101300176b051a16a8dce4</variable>
+    </sys_variable_value>
+    <sys_element_mapping action="delete_multiple" query="id=e98119a9532233008f83ddeeff7b1244"/>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>application</field>
+        <id>e98119a9532233008f83ddeeff7b1244</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-07-09 19:11:21</sys_created_on>
+        <sys_id>a98119a9532233008f83ddeeff7b1261</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-07-09 19:11:21</sys_updated_on>
+        <table>var__m_sys_flow_step_definition_input_106afb6647032200b4fad7527c9a71e7</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>script</field>
+        <id>e98119a9532233008f83ddeeff7b1244</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-07-09 19:11:21</sys_created_on>
+        <sys_id>6d8119a9532233008f83ddeeff7b1261</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-07-09 19:11:21</sys_updated_on>
+        <table>var__m_sys_flow_step_definition_input_106afb6647032200b4fad7527c9a71e7</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>status_update_path</field>
+        <id>e98119a9532233008f83ddeeff7b1244</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-07-09 19:11:21</sys_created_on>
+        <sys_id>2d8119a9532233008f83ddeeff7b1262</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-07-09 19:11:21</sys_updated_on>
+        <table>var__m_sys_hub_step_ext_input_e98119a9532233008f83ddeeff7b1244</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>tweet_text</field>
+        <id>e98119a9532233008f83ddeeff7b1244</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-07-09 19:11:21</sys_created_on>
+        <sys_id>a18119a9532233008f83ddeeff7b1263</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-07-09 19:11:21</sys_updated_on>
+        <table>var__m_sys_hub_step_ext_input_e98119a9532233008f83ddeeff7b1244</table>
+        <value>{{action.tweet}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>twitter_alias_id</field>
+        <id>e98119a9532233008f83ddeeff7b1244</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-07-09 19:11:21</sys_created_on>
+        <sys_id>ed8119a9532233008f83ddeeff7b1262</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-07-09 19:11:21</sys_updated_on>
+        <table>var__m_sys_hub_step_ext_input_e98119a9532233008f83ddeeff7b1244</table>
+        <value/>
+    </sys_element_mapping>
+</record_update>
