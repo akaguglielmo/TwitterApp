@@ -15,14 +15,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2019-07-11 20:53:43</sys_created_on>
         <sys_id>f82c374a532233008f83ddeeff7b129a</sys_id>
-        <sys_mod_count>17</sys_mod_count>
+        <sys_mod_count>18</sys_mod_count>
         <sys_name>Twitter POST REST step</sys_name>
         <sys_package display_value="TwitterSpoke" source="sn_twitterspoke">7a9e0929532233008f83ddeeff7b12a5</sys_package>
         <sys_policy/>
         <sys_scope display_value="TwitterSpoke">7a9e0929532233008f83ddeeff7b12a5</sys_scope>
         <sys_update_name>sys_hub_step_instance_f82c374a532233008f83ddeeff7b129a</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2019-07-15 22:54:28</sys_updated_on>
+        <sys_updated_on>2019-07-19 05:05:45</sys_updated_on>
     </sys_hub_step_instance>
     <sys_variable_value action="delete_multiple" query="document_key=f82c374a532233008f83ddeeff7b129a"/>
     <sys_variable_value action="INSERT_OR_UPDATE">
@@ -89,10 +89,10 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2019-07-12 21:37:26</sys_created_on>
         <sys_id>7ebf016a532233008f83ddeeff7b123c</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>1</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2019-07-12 21:37:26</sys_updated_on>
-        <value>define_connection_inline</value>
+        <sys_updated_on>2019-07-19 05:05:45</sys_updated_on>
+        <value>use_connection_alias</value>
         <variable display_value="">91e207d03b50030057a4a2e334efc4a0</variable>
     </sys_variable_value>
     <sys_variable_value action="INSERT_OR_UPDATE">
@@ -140,15 +140,29 @@
     <sys_variable_value action="INSERT_OR_UPDATE">
         <document>sys_hub_step_instance</document>
         <document_key>f82c374a532233008f83ddeeff7b129a</document_key>
+        <order>15</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-07-19 05:05:45</sys_created_on>
+        <sys_id>e0efa5a4533233008f83ddeeff7b1285</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-07-19 05:05:45</sys_updated_on>
+        <value>https://api.twitter.com</value>
+        <variable display_value="">a67a8ef03b23320057a4a2e334efc472</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_step_instance</document>
+        <document_key>f82c374a532233008f83ddeeff7b129a</document_key>
         <order>10</order>
         <sys_class_name>sys_variable_value</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2019-07-11 20:53:44</sys_created_on>
         <sys_id>fc2c374a532233008f83ddeeff7b12b2</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_mod_count>2</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2019-07-12 21:37:26</sys_updated_on>
-        <value/>
+        <sys_updated_on>2019-07-19 05:05:45</sys_updated_on>
+        <value>2c9f4969532233008f83ddeeff7b123d</value>
         <variable display_value="">262882f03b23320057a4a2e334efc4f0</variable>
     </sys_variable_value>
     <sys_element_mapping action="delete_multiple" query="id=f82c374a532233008f83ddeeff7b129a"/>
@@ -170,11 +184,11 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2019-07-12 21:37:26</sys_created_on>
         <sys_id>36bf016a532233008f83ddeeff7b123c</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>1</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2019-07-12 21:37:26</sys_updated_on>
+        <sys_updated_on>2019-07-19 05:05:45</sys_updated_on>
         <table>var__m_sys_flow_step_definition_input_07a762fb47222200b4fad7527c9a7129</table>
-        <value>{{step[98d9b97c-5e31-4b5d-94ce-c22b64742aa4].baseUrl}}</value>
+        <value/>
     </sys_element_mapping>
     <sys_element_mapping action="INSERT_OR_UPDATE">
         <field>capabilities</field>
